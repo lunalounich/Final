@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Louniche Calculator</title>  <!-- Google Analytics -->  <script async src="https://www.googletagmanager.com/gtag/js?id=GA4:496437030"></script>  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}  
+    gtag('js', new Date());
+    gtag('config', 'GA4:496437030');
+  </script>  <!-- Meta Pixel Code -->  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1704739090150115'); 
+    fbq('track', 'PageView');
+  </script><noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1704739090150115&ev=PageView&noscript=1"/></noscript>
+
+  <!-- End Meta Pixel Code -->  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff0f5;
+      padding: 20px;
+      max-width: 500px;
+      margin: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      direction: rtl;
+    }
+    h1 {
+      text-align: center;
+      color: #d63384;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ffb6c1;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      background-color: #ff69b4;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff1493;
+    }
+    .note {
+      margin-top: 15px;
+      font-size: 0.9em;
+      color: #555;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 1.4em;
+      color: #333;
+      font-weight: bold;
+      text-align: center;
+    }
+    .instagram-footer {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .instagram-footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: #d63384;
+      font-weight: bold;
+    }
+    .instagram-footer img {
+      width: 24px;
+      height: 24px;
+    }
+  </style></head>
+<body>
+  <h1>Louniche Calculator</h1><label for="usd">السعر بالدولار (USD):</label> <input type="number" id="usd" placeholder="أدخل السعر بالدولار" step="0.01" />
+
+<label for="discount">نسبة التخفيض (%) إذا وُجد:</label> <input type="number" id="discount" placeholder="مثلاً: 20" step="1" />
+
+<button onclick="calculatePrice()">احسب السعر</button>
+
+  <div class="result" id="result"></div>  <div class="note">
+    ⚠️ تأكدي من تغيير إعدادات شي إن إلى <strong>فرنسا</strong> والعملة إلى <strong>دولار أمريكي (USD)</strong>.<br />
+    🚫 القسائم غير محسوبة في هذه الحاسبة (لأنها شخصية).
+  </div><button style="background-color: #ff69b4; margin-top:30px;" onclick="openInstagram()">أرسل الطلب</button>
+
+  <div class="instagram-footer">
+    <a href="https://www.instagram.com/lounich_shop?igsh=a2FyamZ2cmprd2M0" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram icon">
+      زر صفحتنا على الإنستجرام
+    <//a>
+  </div>  <div class="note" style="margin-top: 30px; text-align: center;">
+    ❓ إذا لم تعرفي كيف تستعملين الآلة الحاسبة أو ترسلين الطلب، أرسلي رسالة مباشرة إلى صفحتنا على
+    <a href="https://www.instagram.com/lounich_shop?igsh=a2FyamZ2cmprd2M0" style="color: #d63384; font-weight: bold;" target="_blank">الإنستغرام</a>
+    وسنساعدك بكل سرور 💕
+  </div>  <script>
+    function calculatePrice() {
+      const usd = parseFloat(document.getElementById('usd').value) || 0;
+      const discount = parseFloat(document.getElementById('discount').value) || 0;
+      const exchangeRate = 260;
+
+      let discountedUSD = usd;
+      if (discount > 0) {
+        const userPart = (discount * 0.6) / 100;
+        discountedUSD = usd - (usd * userPart);
+      }
+
+      let priceDZD;
+      if (discountedUSD <= 400 / exchangeRate) {
+        priceDZD = discountedUSD * exchangeRate + 100;
+      } else if (discountedUSD <= 600 / exchangeRate) {
+        priceDZD = discountedUSD * exchangeRate + 200;
+      } else if (discountedUSD <= 2000 / exchangeRate) {
+        priceDZD = discountedUSD * exchangeRate + 300;
+      } else if (discountedUSD <= 5000 / exchangeRate) {
+        priceDZD = discountedUSD * exchangeRate + 500;
+      } else if (discountedUSD <= 8500 / exchangeRate) {
+        priceDZD = discountedUSD * exchangeRate * 1.10;
+      } else {
+        priceDZD = discountedUSD * exchangeRate * 1.07;
+      }
+
+      const finalPrice = Math.ceil(priceDZD);
+      document.getElementById('result').textContent = `السعر النهائي: ${finalPrice} دينار جزائري`;
+    }
+
+    function openInstagram() {
+      window.open('https://www.instagram.com/lounich_shop?igsh=a2FyamZ2cmprd2M0', '_blank');
+    }
+  </script></body>
+</html>
